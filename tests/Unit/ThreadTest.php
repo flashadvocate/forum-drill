@@ -9,6 +9,8 @@ class ThreadTest extends TestCase
 {
     use DatabaseMigrations;
 
+    protected $thread;
+
     public function setUp()
     {
         parent::setUp();
@@ -20,6 +22,17 @@ class ThreadTest extends TestCase
     public function a_thread_can_have_replies()
     {
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->thread->replies);
+    }
+
+    /** @test */
+    public function a_thread_can_add_a_reply()
+    {
+        $this->thread->addReply([
+            'body' => 'Foobar',
+            'user_id' => 1
+        ]);
+
+        $this->assertCount(1, $this->thread->replies);
     }
 
     /** @test */
