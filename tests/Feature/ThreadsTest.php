@@ -15,7 +15,7 @@ class ReadThreadsTest extends TestCase
     {
         parent::setUp();
 
-        $this->thread = factory('App\Thread')->create();
+        $this->thread = create('App\Thread');
     }
 
     /** @test */
@@ -35,8 +35,7 @@ class ReadThreadsTest extends TestCase
     /** @test */
     public function a_user_can_view_thread_replies()
     {
-        $reply = factory('App\Reply')
-            ->create(['thread_id' => $this->thread->id]);
+        $reply = create('App\Reply', ['thread_id' => $this->thread->id]);
 
         $this->get($this->thread->path())
             ->assertSee($reply->body);

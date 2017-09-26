@@ -27,7 +27,11 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "classmap": [ "tests/TestCase.php" ],
+        "files": [
+            "tests/utilities/functions.php"
+        ]
     },
     "extra": {
         "laravel": {
