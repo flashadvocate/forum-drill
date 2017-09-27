@@ -25,13 +25,24 @@ $factory->define(App\User::class, function (Faker $faker) {
 });
 
 $factory->define(App\Thread::class, function (Faker $faker) {
-   return [
-       'user_id' => function () {
+    return [
+        'user_id' => function () {
             return factory(App\User::class)->create()->id;
-       },
-       'title' => $faker->sentence,
-       'body' => $faker->paragraph
-   ];
+        },
+        'channel_id' => function () {
+            return factory(App\Channel::class)->create()->id;
+        },
+        'title' => $faker->sentence,
+        'body' => $faker->paragraph
+    ];
+});
+
+$factory->define(App\Channel::class, function (Faker $faker) {
+    $name = $faker->word;
+    return [
+        'name' => $name,
+        'slug' => str_slug($name),
+    ];
 });
 
 $factory->define(App\Reply::class, function (Faker $faker) {

@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
-class ReadThreadsTest extends TestCase
+class ThreadsTest extends TestCase
 {
     use DatabaseMigrations;
 
@@ -21,7 +21,7 @@ class ReadThreadsTest extends TestCase
     /** @test */
     public function a_user_can_view_all_threads()
     {
-        $this->get('/threads/' . $this->thread->id)
+        $this->get('/threads/')
             ->assertSee($this->thread->title);
     }
 

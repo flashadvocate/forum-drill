@@ -10,12 +10,12 @@ class Thread extends Model
 
     public function path()
     {
-        return route('threads.show', $this->id);
+        return "/channel/{$this->channel->slug}/threads/{$this->id}";
     }
 
-    public function replies()
+    public function channel()
     {
-        return $this->hasMany(Reply::class);
+        return $this->belongsTo(Channel::class);
     }
 
     public function creator()
@@ -26,5 +26,10 @@ class Thread extends Model
     public function addReply($reply)
     {
         $this->replies()->create($reply);
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
     }
 }
