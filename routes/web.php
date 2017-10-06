@@ -22,7 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/threads', 'ThreadsController@store')->name('threads.store');
 Route::get('/threads/create', 'ThreadsController@create')->name('threads.create');
 Route::post('/threads/{thread}/replies', 'RepliesController@store')->name('replies.store');
-Route::get('/channel/{channel}/threads/{thread}', 'ThreadsController@show')->name('threads.show');
-Route::get('/threads/{channel?}', 'ThreadsController@index')->name('threads.index');
+Route::get('/channels/{channel}/threads/{thread}', 'ThreadsController@show')->name('threads.show');
+Route::get('/threads', 'ThreadsController@index')->name('threads.index');
+Route::get('/channels/{channel?}', 'ChannelController@index')->name('channels.index');
 
-Route::post('/channel/{channel}/threads/{thread}/replies', 'RepliesController@store')->name('replies.store');
+Route::post('/channels/{channel}/threads/{thread}/replies', 'RepliesController@store')->name('replies.store');
