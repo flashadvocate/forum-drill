@@ -47,6 +47,8 @@
                             @endforeach
                         </ul>
                     </li>
+                    
+                    <li><a href="{{ route('threads.create') }}">Create Thread</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
